@@ -41,6 +41,9 @@ nav a.active{color:var(--gold-deep);font-weight:500}
 .has-sub:hover .sub{opacity:1;visibility:visible;transform:translateY(0)}
 .sub a{display:block;padding:10px 14px;border-radius:5px;font-size:.86rem}
 .sub a:hover{background:var(--paper2);color:var(--gold-deep)}
+  .sub .has-sub{position:relative}
+.sub .has-sub>a{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sub .has-sub .sub{top:-7px;left:100%;margin-left:6px}
 .navcta{background:var(--ink);color:var(--paper)!important;font-weight:500;padding:11px 20px!important;border-radius:5px}
 .navcta:hover{background:var(--gold-deep)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
