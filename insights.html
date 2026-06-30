@@ -38,6 +38,9 @@
   #nav .has-sub:hover .sub,#nav .has-sub:focus-within .sub{display:flex}
   #nav .sub a{display:block;color:var(--ink)}
   #nav .sub a:hover{color:var(--brick);background:var(--paper-2)}
+#nav .sub .has-sub{position:relative}
+#nav .sub .has-sub>a{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#nav .sub .has-sub .sub{top:-8px;left:100%;margin-left:6px}
   .burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
   .burger span{width:24px;height:2px;background:var(--ink);display:block;border-radius:2px}
   @media(max-width:820px){
@@ -126,7 +129,12 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li class="has-sub"><a href="for-sale.html">Properties &#9662;</a>
-          <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a><a href="commercial.html">Commercial</a></div>
+          <div class="sub">
+            <div class="has-sub"><a href="for-sale.html">Residential &#9656;</a>
+              <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a></div>
+            </div>
+            <a href="commercial.html">Commercial</a>
+          </div>
         </li>
         <li><a href="insights.html" aria-current="page">News &amp; Insights</a></li>
         <li><a href="contact.html">Contact</a></li>
