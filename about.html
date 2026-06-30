@@ -41,7 +41,7 @@ nav a.active{color:var(--gold-deep);font-weight:500}
 .has-sub:hover .sub{opacity:1;visibility:visible;transform:translateY(0)}
 .sub a{display:block;padding:10px 14px;border-radius:5px;font-size:.86rem}
 .sub a:hover{background:var(--paper2);color:var(--gold-deep)}
-  .sub .has-sub{position:relative}
+.sub .has-sub{position:relative}
 .sub .has-sub>a{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .sub .has-sub .sub{top:-7px;left:100%;margin-left:6px}
 .navcta{background:var(--ink);color:var(--paper)!important;font-weight:500;padding:11px 20px!important;border-radius:5px}
@@ -159,8 +159,14 @@ footer .fdesc{font-family:'Outfit';color:var(--ink-soft);font-size:.92rem;margin
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="active">About Us</a></li>
         <li class="has-sub"><a href="for-sale.html">Properties &#9662;</a>
-          <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a><a href="commercial.html">Commercial</a></div>
+          <div class="sub">
+            <div class="has-sub"><a href="for-sale.html">Residential &#9656;</a>
+              <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a></div>
+            </div>
+            <a href="commercial.html">Commercial</a>
+          </div>
         </li>
+        <li><a href="insights.html">News &amp; Insights</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a class="navcta" href="contact.html">Get Deal Alerts</a></li>
       </ul>
