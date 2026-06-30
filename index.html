@@ -46,6 +46,9 @@ nav a:hover{color:var(--ink)}
 .has-sub:hover .sub{opacity:1;visibility:visible;transform:translateY(0)}
 .sub a{display:block;padding:10px 14px;border-radius:5px;font-size:.86rem}
 .sub a:hover{background:var(--paper2);color:var(--gold-deep)}
+.sub .has-sub{position:relative}
+.sub .has-sub>a{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sub .has-sub .sub{top:-7px;left:100%;margin-left:6px}
 .navcta{background:var(--ink);color:var(--paper)!important;font-weight:500;padding:11px 20px!important;border-radius:5px}
 .navcta:hover{background:var(--gold-deep)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
@@ -248,6 +251,7 @@ footer .fdesc{font-family:'Outfit';color:var(--ink-soft);font-size:.92rem;margin
   .cred .wrap{justify-content:flex-start;gap:18px 28px}
   nav.open ul{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;background:var(--white);padding:14px;gap:2px;border-bottom:1px solid var(--line)}
   nav.open .sub{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;background:var(--paper2);margin:4px 0}
+  nav.open .sub .sub{margin-left:14px}
 }
 </style>
 </head>
@@ -261,8 +265,13 @@ footer .fdesc{font-family:'Outfit';color:var(--ink-soft);font-size:.92rem;margin
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
-        <li class="has-sub"><a href="for-sale.html">Properties ▾</a>
-          <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a><a href="commercial.html">Commercial</a></div>
+        <li class="has-sub"><a href="for-sale.html">Properties &#9662;</a>
+          <div class="sub">
+            <div class="has-sub"><a href="for-sale.html">Residential &#9656;</a>
+              <div class="sub"><a href="for-sale.html">For Sale</a><a href="for-rent.html">For Rent</a></div>
+            </div>
+            <a href="commercial.html">Commercial</a>
+          </div>
         </li>
         <li><a href="insights.html">News &amp; Insights</a></li>
         <li><a href="contact.html">Contact</a></li>
