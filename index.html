@@ -525,6 +525,7 @@ footer .fdesc{font-family:'Outfit';color:var(--ink-soft);font-size:.92rem;margin
           <div class="field"><label>Anything we should know? (optional)</label><textarea id="msg" placeholder="Property type, budget, timeline…"></textarea></div>
           <button class="btn btn-gold" onclick="submitLead()">Add Me to Deal Alerts →</button>
           <p class="formnote">By submitting you agree to be contacted about opportunities. Unsubscribe anytime.</p>
+          <p class="formnote" id="formerror" style="display:none;color:#9C4A2E">Something went wrong sending your message. Please email <a href="mailto:buyscproperties@gmail.com">buyscproperties@gmail.com</a> or call 864-381-0808.</p>
         </div>
         <div class="success" id="success">
           <div class="chk">✓</div>
@@ -558,10 +559,32 @@ footer .fdesc{font-family:'Outfit';color:var(--ink-soft);font-size:.92rem;margin
 function submitLead(){
   var em=document.getElementById('em').value.trim();
   if(!em||em.indexOf('@')<0){var e=document.getElementById('em');e.focus();e.style.borderColor='#9C4A2E';return;}
-  var lead={first:document.getElementById('fn').value,last:document.getElementById('ln').value,email:em,phone:document.getElementById('ph').value,interest:document.getElementById('int').value,message:document.getElementById('msg').value,ts:new Date().toISOString()};
-  console.log('LEAD CAPTURED',lead); // wire to Google Sheet / Mailchimp / email handler
-  document.getElementById('formbody').style.display='none';
-  document.getElementById('success').classList.add('show');
+  var btn=document.querySelector('.form .btn-gold');
+  var errEl=document.getElementById('formerror');
+  if(errEl){errEl.style.display='none';}
+  var lead={
+    firstName:document.getElementById('fn').value,
+    lastName:document.getElementById('ln').value,
+    email:em,
+    phone:document.getElementById('ph').value,
+    interest:document.getElementById('int').value,
+    message:document.getElementById('msg').value
+  };
+  if(btn){btn.disabled=true;btn.style.opacity='0.6';}
+  fetch('/api/contact',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(lead)
+  }).then(function(res){
+    if(!res.ok){throw new Error('Request failed');}
+    return res.json();
+  }).then(function(){
+    document.getElementById('formbody').style.display='none';
+    document.getElementById('success').classList.add('show');
+  }).catch(function(){
+    if(btn){btn.disabled=false;btn.style.opacity='1';}
+    if(errEl){errEl.style.display='block';}
+  });
 }
     t.classList.add('on');
     var f=t.getAttribute('data-f');
